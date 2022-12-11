@@ -309,7 +309,7 @@ function drawTextInfo() {
 }
 function drawMap() {
 
-  d3.json("ukraine-with-regions_1530.geojson", function (error, features) {
+  d3.json("ukraine-with-regions_1530.json", function (error, features) {
 
     // Add a scale for bubble size
     g.selectAll("path")

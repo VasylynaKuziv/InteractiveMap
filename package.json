@@ -12,5 +12,8 @@
     "data-driven-range-slider": "^1.0.1",
     "express": "^4.17.1",
     "geojson-rewind": "^0.2.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
