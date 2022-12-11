@@ -1,0 +1,184 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+}
+
+
+.region {
+  stroke: white;
+  stroke-width: 0.5px;
+}
+
+.region:hover {
+  fill: #b1afaf;
+  opacity: 30%;
+}
+
+#header_div {
+  width: 55%;
+  /* height:50vh; */
+  /*border:1px solid red;*/
+  font-size: calc(2vw + 2vh);
+  float: left;
+}
+
+#map_div {
+  width: 55%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+}
+
+.chart {
+  /* border-width:2px;
+border-style:solid;
+border-color:red; */
+  width: 100%;
+}
+
+#side_charts {
+  width: 43%;
+  float: right;
+}
+
+.headline,
+.subline {
+  display: block;
+  /* margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0; */
+  font-family: 'PT Sans', sans-serif;
+  opacity: 0.7;
+}
+
+.headline {
+  font-weight: bold;
+}
+
+.subline {
+  font-size: 50%;
+  font-weight: thin;
+}
+
+.label {
+  font-family: 'PT Sans', sans-serif;
+  opacity: 1;
+  font-size: 30%;
+}
+
+
+
+.slider-container {
+  background-color: #f2f2f9;
+}
+
+.slider {
+  position: absolute;
+  border: 1px solid #AAB;
+  background: #b2b0b0;
+  height: 100%;
+  width: 58px;
+  top: 0px;
+  cursor: move;
+  /*margin:-0.5px;*/
+}
+
+.slider .handle {
+  position: absolute;
+  height: 9px;
+  width: 9px;
+  border: 1px solid #AAB;
+  background: blue;
+
+  /* Support for bootstrap */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.slider .EE {
+  right: -4px;
+  cursor: e-resize;
+}
+
+.slider .WW {
+  cursor: w-resize;
+  left: -4px;
+}
+
+.slider .EE,
+.slider .WW {
+  top: 50%;
+  margin-top: -4px;
+}
+
+
+#play-button {
+  margin-left: 1.5%;
+  display: inline;
+  border-radius: 50%;
+  border: 2px solid white;
+  padding-left: 0.3%;
+  padding-right: 0.3%;
+}
+
+#slider-container {
+  display: inline-block;
+  position: relative;
+  height: 10px;
+  width: 50%;
+  background-color: #eeeef5;
+  margin-left: 1%;
+  margin-top: 2%;
+}
+
+#range-label {
+  margin-left: 25%;
+  margin-top: 0.5%;
+  font-size: 0.8em;
+}
+
+.axisWhite line {
+  stroke: white;
+}
+
+.axisWhite path {
+  stroke: white;
+}
+
+.axisWhite text {
+  fill: white;
+}
+
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

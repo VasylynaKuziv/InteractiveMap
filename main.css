@@ -1,0 +1,132 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+}
+
+
+.region {
+  stroke: black;
+  stroke-width: 0.1px;
+}
+
+.region:hover {
+  fill: #742121;
+  opacity: 30%;
+}
+
+#header_div{
+  width:55%;
+  /* height:50vh; */
+  /*border:1px solid red;*/
+  font-size: calc(2vw + 2vh);
+  float:left;
+}
+
+#map_div{
+  width:55%;
+  border-width:2px;
+border-style:solid;
+border-color:black;
+}
+.chart{
+  /* border-width:2px;
+border-style:solid;
+border-color:red; */
+width: 100%;
+}
+#side_charts{
+  width:43%;
+float: right;
+}
+.headline, .subline{
+  display: block;
+  /* margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0; */
+  font-family: 'PT Sans',sans-serif;
+  opacity: 0.5;
+}
+
+.headline{
+  font-weight: bold;
+}
+
+.subline{
+  font-size: 50%;
+  font-weight: thin;
+}
+
+.label{
+  font-family: 'PT Sans',sans-serif;
+  opacity: 1;
+  font-size: 30%;
+}
+
+
+
+.slider-container {
+  background-color: #f2f2f9;
+}
+
+.slider {
+  position: absolute;
+  border: 1px solid #AAB;
+  background: #b2b0b0;
+  height: 100%;
+  width: 58px;
+  top: 0px;
+  cursor: move;
+  /*margin:-0.5px;*/
+}
+
+.slider .handle {
+  position: absolute;
+  height: 9px;
+  width: 9px;
+  border: 1px solid #AAB;
+  background: red;
+
+  /* Support for bootstrap */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.slider .EE {
+  right: -4px;
+  cursor: e-resize;
+}
+
+.slider .WW {
+  cursor: w-resize;
+  left: -4px;
+}
+
+.slider .EE, .slider .WW {
+  top: 50%;
+  margin-top: -4px;
+}
+
+
+#play-button{
+margin-left: 2%;
+  display: inline;
+}
+
+#slider-container {
+  display: inline-block;
+    position: relative;
+    height:20px;
+    width: 50%;
+    background-color: #eeeef5;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+#range-label{
+  margin-left: 23%;
+  margin-top: 1%;
+}
