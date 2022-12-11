@@ -169,7 +169,8 @@ function init() {
   // set the ranges
   color = d3.scaleOrdinal()
     .domain(allTypes)
-    .range(['#00296b', 'blue', '#00509d', '#fdc500', '#ffd500'])
+    .range(['#00296b', 'blue', '#00509d', '#FFEA11', '#FFA300'])
+  //.range(["#114084", "#3466aa", "#82b7dc", "#F1F1F1", "#808080" ])
   var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
     .key(function (d) { return d.admin1; })
     .entries(events);
@@ -247,8 +248,6 @@ function init() {
         let el1 = d3.select("#" + selectedRegion)
           .attr("stroke", "lightgray")
           .attr("stroke-width", 5)
-          .attr('opacity', '1');
-
       }
       selectedRegion = '';
     }
@@ -400,13 +399,13 @@ function drawMap() {
 
 function drawEvents() {
   var map_data = map_data_func(events);
-
+  console.log(map_data)
   var maxSizeCalc = function (data) {
     return d3.max(data, function (d) { return d.num_events; });
   }
   size = d3.scaleLinear()
-    .domain([1, maxSizeCalc(map_data)])  // What's in the data
-    .range([3, 20])  // Size in pixel
+    .domain([0, maxSizeCalc(map_data)])  // What's in the data
+    .range([0, 20])  // Size in pixel
   svg.selectAll('circle').remove()
 
   //var g2 = svg.append("g"); // pie charts
@@ -414,7 +413,7 @@ function drawEvents() {
     .innerRadius(0)
     //.outerRadius(20)
     .outerRadius(function (d, i) {
-      return Math.max(5, Math.round(size(d.data)))
+      return Math.max(0, Math.ceil(size(d.data)))
     });
 
   var pie = d3.pie()
@@ -465,11 +464,13 @@ function drawEvents() {
     })
     .attr("class", function (d) { return d.event_type.replaceAll('/', '').replaceAll(" ", '') })
     .attr("r", function (d) {
-      return Math.max(0, size(d.num_events))
+      if (size(d.num_events) <= 0)
+        return 0;
+      return Math.max(2, size(d.num_events))
     })
     .style("fill", function (d) { return color(d.event_type) })
-    //.attr("stroke", function (d) { return "red" })
-    .attr("stroke-width", 3)
+    .attr("stroke", function (d) { return "black" })
+    .attr("stroke-width", 0.1)
   // .attr("fill-opacity", .4)
 }
 
