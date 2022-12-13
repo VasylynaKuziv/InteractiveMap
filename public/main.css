@@ -20,7 +20,7 @@ body {
   width: 55%;
   /* height:50vh; */
   /*border:1px solid red;*/
-  font-size: calc(2vw + 2vh);
+  font-size: calc(1.5vw + 1.5vh);
   float: left;
 }
 

@@ -169,8 +169,8 @@ function init() {
   // set the ranges
   color = d3.scaleOrdinal()
     .domain(allTypes)
-    .range(['#00296b', 'blue', '#00509d', '#FFEA11', '#FFA300'])
-  //.range(["#114084", "#3466aa", "#82b7dc", "#F1F1F1", "#808080" ])
+    .range(["#f7f0be",'#2226d6', '#0f77f7', '#FFEA11',  '#FFA300'])
+  //.range(["#114084", "#3466aa", "#82b7dc", "#F1F1F1", "#808080" ]) '#00296b', 
   var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
     .key(function (d) { return d.admin1; })
     .entries(events);
@@ -470,7 +470,7 @@ function drawEvents() {
     })
     .style("fill", function (d) { return color(d.event_type) })
     .attr("stroke", function (d) { return "black" })
-    .attr("stroke-width", 0.1)
+    .attr("stroke-width", 0.2)
   // .attr("fill-opacity", .4)
 }
 
@@ -633,7 +633,7 @@ function region_clicked(event, d) {
   previousSelectedRegion = selectedRegion;
   if (event.defaultPrevented) return; // dragged
   if (selectedRegion != '') {
-    let el1 = d3.select("#" + selectedRegion)
+    d3.select("#" + selectedRegion)
       .attr("stroke", "lightgray")
       .attr("fill", "black")
       .attr('opacity', '1');
