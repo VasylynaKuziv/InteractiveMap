@@ -14,6 +14,7 @@ var color, size, allTypes;
 var svg2, svg3, g, path, x2;
 var dateBegin, dateEnd;
 var barplot_data;
+var map_data;
 
 d3.csv("./public/Ukraine_Black_Sea_2020_2022_Dec02.csv")
   .row(function (d) {
@@ -215,6 +216,14 @@ function init() {
 
   minRange = x2.domain()[0].getTime();
   maxRange = x2.domain()[1].getTime();
+  map_data = map_data_func(events);
+  console.log(map_data);
+  var maxSizeCalc = function (data) {
+    return d3.max(data, function (d) { return d.num_events; });
+  }
+  size = d3.scaleLinear()
+    .domain([0, maxSizeCalc(map_data)])  // What's in the data
+    .range([0, 20])  // Size in pixel
 
   var slider = createD3RangeSlider(minRange, maxRange, "#slider-container");
   slider.onChange(function (newRange) {
@@ -242,15 +251,20 @@ function init() {
     .attr("transform",
       "translate(" + margin.left + "," + margin.top + ")")
   d3.select("body").select("#header_div").on("click", function () {
-    var outside = regions_div.filter(equalToEventTarget).empty();
-    if (outside) {
+    
       if (selectedRegion != '') {
-        let el1 = d3.select("#" + selectedRegion)
-          .attr("stroke", "lightgray")
-          .attr("stroke-width", 5)
+        previousSelectedRegion = selectedRegion;
+  if (selectedRegion != '') {
+    d3.select("#" + selectedRegion)
+      .attr("stroke", "lightgray")
+      .attr("fill", "black")
+      .attr('opacity', '1');
+  }
+  
+  selectedRegion = '';
+  drawLineChart();
+  selectBarChart(previousSelectedRegion, selectedRegion);
       }
-      selectedRegion = '';
-    }
   });
   function sleep2(delay) {
     var start = new Date().getTime();
@@ -398,56 +412,11 @@ function drawMap() {
 }
 
 function drawEvents() {
-  var map_data = map_data_func(events);
-  console.log(map_data)
-  var maxSizeCalc = function (data) {
-    return d3.max(data, function (d) { return d.num_events; });
-  }
-  size = d3.scaleLinear()
-    .domain([0, maxSizeCalc(map_data)])  // What's in the data
-    .range([0, 20])  // Size in pixel
-  svg.selectAll('circle').remove()
-
-  //var g2 = svg.append("g"); // pie charts
-  var arc = d3.arc()
-    .innerRadius(0)
-    //.outerRadius(20)
-    .outerRadius(function (d, i) {
-      return Math.max(0, Math.ceil(size(d.data)))
-    });
-
-  var pie = d3.pie()
-    .sort(null)
-    .value(function (d) { return d; });
-
-  var color10 = d3.schemeCategory10;
-  // var pie_data = function (d) {
-  //   var result = [];
-  //   for (var i = 0; i < types.length; i++) {
-  //     result.push(d[types[i]]);
-  //   }
-  //   return result;
-  // };
-  // var pies = svg.selectAll('.pie')
-  //   .data(map_data)
-  //   .enter()
-  //   .append('g')
-  //   .attr('class', 'pie')
-  //   .attr("transform", function (d) {
-  //     return "translate(" + projection([d.long, d.lat]) + ")";
-  //   });
-  // pies.selectAll('.slice')
-  //   .data(function (d) {
-  //     //return pie([d[types[0], d[types[1], d[types[2]]]]]);
-  //     return pie(pie_data(d));
-  //   })
-  //   .enter()
-  //   .append('path')
-  //   .attr('d', arc)
-  //   .style('fill', function (d, i) {
-  //     return color(i);
-  //   });
-
+  
+  
+  svg.selectAll('circle').remove();
+  map_data = map_data_func(events);
+  console.log(map_data);
   g
     .selectAll("circle")
     .data(map_data)
